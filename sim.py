@@ -38,11 +38,13 @@ for index, row in resultados.iterrows():
         with col3:
             row1, row2 = st.columns([1, 1])
             with row1:
-                st.metric(label="Votos Generales", value=f"{votos_generales:,}")
+                # Mostrar los votos LLAxVotoGen en Votos Generales
+                st.metric(label="Votos Generales", value=f"{row['LLAxVotoGen']:,}")
                 st.metric(label="% LLA Generales", value=f"{row['%LLA Gen']:.2f}%")
 
             with row2:
-                st.metric(label="Votos Ballotage", value=f"{votos_ballotage:,}")
+                # Mostrar los votos LLAxVotoBall en Votos Ballotage
+                st.metric(label="Votos Ballotage", value=f"{row['LLAxVotoBall']:,}")
                 st.metric(label="% LLA Ballotage", value=f"{row['%LLA Ball']:.2f}%")
 
         # Sumar los votos simulados
