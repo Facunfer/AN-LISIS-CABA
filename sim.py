@@ -1,11 +1,8 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 import plotly.graph_objects as go
 
-
-
-
+# Cargar los datos
 resultados = pd.read_csv(f"https://raw.githubusercontent.com/Facunfer/AN-LISIS-CABA/refs/heads/main/InteractiveSheet_2025-01-03_03_20_37%20-%20Hoja%201%20(1).csv")
 
 # Ordenar las comunas del 1 al 15
@@ -35,8 +32,8 @@ for index, row in resultados.iterrows():
             votos_equivalentes = int((porcentaje_input / 100) * votos_generales)
 
         with col2:
-            # Input manual de votos
-            votos_input = st.number_input(f"Votos simulados en {comuna}", min_value=0, max_value=votos_generales, step=1, value=votos_equivalentes, key=f"votos_{index}")
+            # Input manual de votos (sin límite máximo)
+            votos_input = st.number_input(f"Votos simulados en {comuna}", min_value=0, step=1, value=votos_equivalentes, key=f"votos_{index}")  # Sin max_value
 
         with col3:
             row1, row2 = st.columns([1, 1])
